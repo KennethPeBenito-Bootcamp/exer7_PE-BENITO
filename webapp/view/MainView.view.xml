@@ -1,0 +1,32 @@
+<mvc:View controllerName="com.training.exer7pebenito.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <Panel id="panelEmployeeDetails" headerText="Employees Details">
+        <form:SimpleForm id="formEmployee" editable="true">
+            <form:toolbar>
+                <Toolbar id="tbActions" >
+                <Button id="btnRead" text="Read" press="onPressRead"/>
+                <Button id="btnCreate" text="Create" press="onPressCreate"/>
+                <Button id="btnUpdate" text="Update" press="onPressUpdate"/>
+                <Button id="btnDelete" text="Delete" press="onPressDelete"/>
+                </Toolbar>
+            </form:toolbar>
+            <form:content>
+                <Label id="lblFirstName" text="First Name"/>
+                <Input id="inFirstName" value="{FirstName}" />
+                <Label id="lblLastName" text="Last Name" />
+                <Input id="inLastName" value="{LastName}" />
+            </form:content>
+        </form:SimpleForm>
+    </Panel>
+    <Panel id="panelEmployee" headerText="Employees">
+        <List id="listEmployee" items="{/Employees}" selectionChange="onSelectEmployee" mode="SingleSelectMaster">
+            <items>
+                <StandardListItem id="listName" title="{FirstName} {LastName}"/>
+            </items>
+        </List>
+    </Panel>
+    </Page>
+</mvc:View>
