@@ -1,6 +1,10 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/Sorter",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
+], (Controller, Sorter, Filter, FilterOperator, FilterType) => {
     "use strict";
 
     return Controller.extend("com.training.exer7pebenito.controller.MainView", {
@@ -130,7 +134,16 @@ sap.ui.define([
 
                 }
             })
-        } 
+        } ,
+        onAfterRendering: function() {
+			const oProductView = this.getView();
+			const oSortProdName = new Sorter("ProductName");
+			oProductView.byId("productTable").getBinding("items").sort(oSortProdName);
+
+			const oDiscontView = this.getView();
+			const oFilter = new Filter("Discontinued", FilterOperator.EQ, false);
+			oDiscontView.byId("productTable").getBinding("items").filter(oFilter, FilterType.Control);
+		}
 
     });
 });
