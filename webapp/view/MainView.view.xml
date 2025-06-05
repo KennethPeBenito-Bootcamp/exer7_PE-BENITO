@@ -28,5 +28,49 @@
             </items>
         </List>
     </Panel>
+    <Panel id="panelProducts">
+        <Table id="productTable" items="{/Products}">
+            <items>
+                <ColumnListItem type="Active" id="iditemcolumn1">
+                    <cells>
+                        <ObjectIdentifier id="prodId" title="{ProductName}" text="{i18n>prodIdLbl} {ProductID}"/>
+                            <Text id="idSupId" text="{SupplierID}"/>
+                        <ObjectIdentifier id="idUPrice" title="{UnitPrice}" text="{QuantityPerUnit}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+            <columns>
+                <Column id="idProdColumn">
+                    <header>
+                        <Label id="idLblProd" text="{i18n>prodNameLbl}"/>
+                    </header>
+                </Column>
+                <Column id="idSupColumn">
+                    <header>
+                        <Label id="idInptSupID" text="{i18n>suppIdLbl}"/>
+                    </header>
+                </Column>
+                <Column id="idPriceColumn">
+                    <header>
+                        <Label id="idLblUnPrice" text="{i18n>priceLbl}"/>
+                    </header>
+                </Column>
+            </columns>
+            <headerToolbar>
+                <Toolbar width="100%" id="idProdHeadToolbar">
+                    <content>
+                        <Title text="{i18n>productHeaderLbl}" id="idProdHeader"/>
+                    </content>
+                </Toolbar>
+            </headerToolbar>
+            <infoToolbar>
+                <Toolbar width="100%" id="idSubHeaderToolbar">
+                    <content>
+                        <Text text="{i18n>wideHeaderLbl}" id="idWideHeader"/>
+                    </content>
+                </Toolbar>
+            </infoToolbar>
+        </Table>
+    </Panel>
     </Page>
 </mvc:View>
